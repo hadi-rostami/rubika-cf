@@ -1,0 +1,12 @@
+{
+  "name": "rubika-cf",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "wrangler": "^4.157.0"
+  },
+  "peerDependencies": {
+    "typescript": "^7"
+  }
+}
