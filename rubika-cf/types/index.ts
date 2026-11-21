@@ -125,11 +125,11 @@ export interface ApiResponse<T = unknown> {
 /* =========================
  * Bot.ts types
  * ========================= */
-export type AnyContext = MessageContext | UpdateContext | InlineContext;
-export type Next = () => Promise<void>;
-export type Middleware = (ctx: AnyContext, next: Next) => unknown;
+export type Context = MessageContext | UpdateContext | InlineContext;
+export type NextFunction = () => Promise<void>;
+export type Middleware = (ctx: Context, next: NextFunction) => unknown;
 export type Handler<C> = (ctx: C) => unknown;
-export type ErrorHandler = (err: unknown, ctx: AnyContext) => unknown;
+export type ErrorHandler = (err: unknown, ctx: Context) => unknown;
 
 export interface ExecutionContextLike {
   waitUntil(promise: Promise<unknown>): void;

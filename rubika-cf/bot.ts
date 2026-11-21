@@ -66,7 +66,7 @@ export class Bot {
   }
 
   async handleUpdate(payload: unknown): Promise<void> {
-    let ctx: Types.AnyContext | null;
+    let ctx: Types.Context | null;
     try {
       ctx = this.createContext(payload);
     } catch (err) {
@@ -86,7 +86,7 @@ export class Bot {
     }
   }
 
-  private createContext(payload: unknown): Types.AnyContext | null {
+  private createContext(payload: unknown): Types.Context | null {
     if (!payload || typeof payload !== "object") return null;
     const p = payload as { update?: Update; inline_message?: InlineMessage };
 
@@ -103,7 +103,7 @@ export class Bot {
     return new UpdateContext(this.api, update);
   }
 
-  private run(ctx: Types.AnyContext): Promise<void> {
+  private run(ctx: Types.Context): Promise<void> {
     let last = -1;
     const dispatch = async (i: number): Promise<void> => {
       if (i <= last) throw new RubikaError("next() called multiple times");
@@ -115,7 +115,7 @@ export class Bot {
     return dispatch(0);
   }
 
-  private route(ctx: Types.AnyContext): Promise<void> {
+  private route(ctx: Types.Context): Promise<void> {
     if (ctx instanceof InlineContext) return this.routeInline(ctx);
     if (ctx instanceof MessageContext) return this.routeMessage(ctx);
     return this.routeUpdate(ctx);

@@ -40,9 +40,7 @@ export class RubikaApi {
     const timer = setTimeout(() => controller.abort(), this.timeoutMs);
 
     let res: Response;
-
-    console.log(params);
-
+    
     try {
       res = await this.fetchFn(url, {
         method: "POST",
