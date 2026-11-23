@@ -1,14 +1,53 @@
 {
   "name": "rubika-cf",
-  "version": "0.1.0",
-  "main": "./rubika-cf/index.ts",
+  "version": "0.3.0",
+  "description": "TypeScript library for building Rubika bots on Cloudflare Workers with zero runtime dependencies",
+  "type": "module",
+  "license": "MIT",
+  "author": "hadi-rostami",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": "./rubika-cf/index.ts"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./errors": {
+      "types": "./dist/errors.d.ts",
+      "import": "./dist/errors.js"
+    },
+    "./types/enums": {
+      "types": "./dist/types/enums.d.ts",
+      "import": "./dist/types/enums.js"
+    }
   },
   "files": [
-    "rubika-cf"
+    "dist",
+    "README.md"
   ],
+  "sideEffects": false,
+  "keywords": [
+    "rubika",
+    "rubika-bot",
+    "cloudflare",
+    "workers",
+    "bot-api",
+    "webhook",
+    "typescript"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run build"
+  },
   "peerDependencies": {
     "typescript": ">=5.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261121.1",
+    "@types/node": "^26.6.6",
+    "tsup": "^8.3.0",
+    "typescript": "^5.9.3",
+    "wrangler": "^4.157.0"
   }
 }

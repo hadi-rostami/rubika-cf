@@ -42,3 +42,5 @@ worker.ts
 wrangler.toml
 /rubika-cf/package.json
 /rubika-cf/README.md
+tsconfig.build.json
+package-lock.json

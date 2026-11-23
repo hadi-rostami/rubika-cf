@@ -171,7 +171,7 @@ export class Bot {
 
     return async (
       request: Request,
-      execCtx?: Types.ExecutionContextLike,
+      execCtx?: Types.ExecutionContext,
     ): Promise<Response> => {
       const { pathname } = new URL(request.url);
       const inScope = pathname === prefix || pathname.startsWith(`${prefix}/`);

@@ -131,7 +131,7 @@ export type Middleware = (ctx: Context, next: NextFunction) => unknown;
 export type Handler<C> = (ctx: C) => unknown;
 export type ErrorHandler = (err: unknown, ctx: Context) => unknown;
 
-export interface ExecutionContextLike {
+export interface ExecutionContext {
   waitUntil(promise: Promise<unknown>): void;
 }
 

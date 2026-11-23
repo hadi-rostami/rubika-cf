@@ -4,6 +4,7 @@ import type * as Params from "./types/params";
 import type { InlineMessage, Update } from "./types/updates";
 
 export type SendExtra = Omit<Params.SendMessageParams, "chat_id" | "text">;
+export type SendFileExtra = Omit<Params.SendFileParams, "chat_id" | "file_id">;
 type MessageId = Models.Message["message_id"];
 
 export abstract class BaseContext {
@@ -19,7 +20,7 @@ export abstract class BaseContext {
     return this.api.sendMessage({ chat_id: this.chatId, text, ...extra });
   }
 
-  replyWithFile(fileId: string, extra?: SendExtra) {
+  replyWithFile(fileId: string, extra?: SendFileExtra) {
     return this.api.sendFile({
       chat_id: this.chatId,
       file_id: fileId,
